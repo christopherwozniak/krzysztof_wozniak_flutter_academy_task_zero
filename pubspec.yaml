@@ -37,6 +37,7 @@ dependencies:
   new_gradient_app_bar: ^0.2.0
   flutter_gradients: ^1.0.0+3
   google_fonts: ^2.3.0
+  
 
 dev_dependencies:
   flutter_test:
