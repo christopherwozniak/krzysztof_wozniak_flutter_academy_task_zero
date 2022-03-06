@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:math' as math;
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
@@ -91,30 +92,33 @@ class _HomePageState extends State<HomePage> {
                 child: const Text('Who scream'),
                 color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
+              InkWell(
+                onTap: () {
+                  setState(() {});
+                },
+                child: const Image(
+                  image: AssetImage('images/krzysztofwozniak.jpg'),
+                ),
+              ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: const Text('Revolution is coming...'),
+                child: const Text('Sound of screams but the'),
                 color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: const Text('Revolution, they...'),
+                child: const Text('Sound of screams but the'),
                 color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: const Text('Who scream'),
+                child: const Text('Sound of screams but the'),
                 color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: const Text('Revolution is coming...'),
-                color: Colors.teal[500],
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: const Text('Revolution, they...'),
-                color: Colors.teal[600],
+                child: const Text('Sound of screams but the'),
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
             ],
           ),
