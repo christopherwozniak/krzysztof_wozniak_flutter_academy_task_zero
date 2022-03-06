@@ -28,74 +28,95 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: GridView.count(
-          shrinkWrap: true,
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 3,
-          children: <Widget>[
-            const GridOneElement(),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Heed not the rabble'),
-              color: Colors.teal[200],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Sound of screams but the'),
-              color: Colors.teal[300],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Who scream'),
-              color: Colors.teal[400],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Revolution is coming...'),
-              color: Colors.teal[500],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Revolution, they...'),
-              color: Colors.teal[600],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Who scream'),
-              color: Colors.teal[400],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Revolution is coming...'),
-              color: Colors.teal[500],
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text('Revolution, they...'),
-              color: Colors.teal[600],
-            ),
-          ],
+        child: Container(
+          color: Colors.yellowAccent,
+          child: GridView.count(
+            shrinkWrap: true,
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 3,
+            children: <Widget>[
+              GridOneElement(
+                onTap: () {},
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Heed not the rabble'),
+                color: Colors.teal[200],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Sound of screams but the'),
+                color: Colors.teal[300],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Who scream'),
+                color: Colors.teal[400],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Revolution is coming...'),
+                color: Colors.teal[500],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Revolution, they...'),
+                color: Colors.teal[600],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Who scream'),
+                color: Colors.teal[400],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Revolution is coming...'),
+                color: Colors.teal[500],
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: const Text('Revolution, they...'),
+                color: Colors.teal[600],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class GridOneElement extends StatelessWidget {
+class GridOneElement extends StatefulWidget {
   const GridOneElement({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
 
+  final void Function() onTap;
+
+  @override
+  State<GridOneElement> createState() => _GridOneElementState();
+}
+
+class _GridOneElementState extends State<GridOneElement> {
+  bool isTapped = false;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        setState(() {
+          isTapped = !isTapped;
+        });
+      },
       child: Container(
         padding: const EdgeInsets.all(8),
-        child: const Text("Nazywam się..."),
+        child: Center(
+          child: Text(
+              isTapped ? "Krzysztof Marek Woźniak 🏉" : "My name is...🕵️‍♂️"),
+        ),
         color: Colors.teal[100],
       ),
     );
