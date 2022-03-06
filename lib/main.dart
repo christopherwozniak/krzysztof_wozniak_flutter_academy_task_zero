@@ -21,26 +21,20 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.yellow,
         ),
         home: Scaffold(
-          appBar: NewGradientAppBar(
-              title: const Text('Krzysztof Woźniak'),
-              gradient: const LinearGradient(
-                  colors: [Colors.blueAccent, Colors.yellow])),
-        ));
+            appBar: NewGradientAppBar(
+                title: const Text('Krzysztof Woźniak'),
+                gradient: const LinearGradient(
+                    colors: [Colors.blueAccent, Colors.yellow])),
+            body: GridView.count(
+              crossAxisCount: 3,
+              children: List.generate(9, (index) {
+                return Center(
+                  child: Text(
+                    'Item $index',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                );
+              }),
+            )));
   }
 }
-       
-            // body: GridView.count(
-            //   crossAxisCount: 2,
-            //   children: List.generate(100, (index) {
-            //     return Center(
-            //       child: Text(
-            //         'Item $index',
-            //         style: Theme.of(context).textTheme.headline5,
-            //       ),
-            //     );
-            //   }),
-            // )));
-
-  
-  
-
