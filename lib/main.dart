@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,57 +22,78 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  double borderWidth = 20;
+  Color borderColor = Colors.yellowAccent;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.yellowAccent,
       body: Center(
         child: Container(
-          color: Colors.yellowAccent,
+          color: borderColor,
           child: GridView.count(
             shrinkWrap: true,
             primary: false,
-            padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            padding: EdgeInsets.all(borderWidth),
+            crossAxisSpacing: borderWidth,
+            mainAxisSpacing: borderWidth,
             crossAxisCount: 3,
             children: <Widget>[
               GridOneElement(
-                onTap: () {},
+                onTap: () {
+                  setState(() {});
+                  borderWidth = 10;
+                  borderColor =
+                      Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                          .withOpacity(1.0);
+                },
+                firstTap: 'My name is... 🕵️‍♂️',
+                secondTap: 'Krzysztof Woźniak 🧟‍♂️',
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: const Text('Heed not the rabble'),
-                color: Colors.teal[200],
+                child: Text(
+                  'Heed not the rabble',
+                  style: GoogleFonts.aclonica(
+                      color: Colors.redAccent, fontSize: 20),
+                ),
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
                 child: const Text('Sound of screams but the'),
-                color: Colors.teal[300],
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
                 child: const Text('Who scream'),
-                color: Colors.teal[400],
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
                 child: const Text('Revolution is coming...'),
-                color: Colors.teal[500],
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
                 child: const Text('Revolution, they...'),
-                color: Colors.teal[600],
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
                 child: const Text('Who scream'),
-                color: Colors.teal[400],
+                color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
@@ -93,9 +117,13 @@ class GridOneElement extends StatefulWidget {
   const GridOneElement({
     Key? key,
     required this.onTap,
+    required this.firstTap,
+    required this.secondTap,
   }) : super(key: key);
 
   final void Function() onTap;
+  final String firstTap;
+  final String secondTap;
 
   @override
   State<GridOneElement> createState() => _GridOneElementState();
@@ -110,14 +138,19 @@ class _GridOneElementState extends State<GridOneElement> {
         setState(() {
           isTapped = !isTapped;
         });
+        widget.onTap();
       },
       child: Container(
         padding: const EdgeInsets.all(8),
         child: Center(
           child: Text(
-              isTapped ? "Krzysztof Marek Woźniak 🏉" : "My name is...🕵️‍♂️"),
+            isTapped ? widget.secondTap : widget.firstTap,
+            style: isTapped
+                ? GoogleFonts.aladin(fontSize: 20)
+                : GoogleFonts.lateef(fontSize: 30, color: Colors.blueAccent),
+          ),
         ),
-        color: Colors.teal[100],
+        color: const Color(0xFF3737A0).withOpacity(0.5),
       ),
     );
   }
