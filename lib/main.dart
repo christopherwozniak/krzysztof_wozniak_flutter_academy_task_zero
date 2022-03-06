@@ -36,11 +36,7 @@ class HomePage extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisCount: 3,
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text("He'd have you all unravel at the"),
-              color: Colors.teal[100],
-            ),
+            const GridOneElement(),
             Container(
               padding: const EdgeInsets.all(8),
               child: const Text('Heed not the rabble'),
@@ -83,6 +79,24 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class GridOneElement extends StatelessWidget {
+  const GridOneElement({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        child: const Text("Nazywam się..."),
+        color: Colors.teal[100],
       ),
     );
   }
