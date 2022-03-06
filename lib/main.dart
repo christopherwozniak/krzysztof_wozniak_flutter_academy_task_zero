@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'dart:math' as math;
 
-import 'package:google_fonts/google_fonts.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellowAccent,
+      appBar: NewGradientAppBar(
+        title: const Center(
+            child: Text(
+          'Krzysztof Woźniak Task Zero',
+        )),
+        gradient: const LinearGradient(
+          colors: [
+            Colors.blueAccent,
+            Colors.yellowAccent,
+          ],
+        ),
+      ),
+      backgroundColor: Colors.grey,
       body: Center(
         child: Container(
           color: borderColor,
@@ -63,10 +76,8 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: Text(
+                child: const Text(
                   'Heed not the rabble',
-                  style: GoogleFonts.aclonica(
-                      color: Colors.redAccent, fontSize: 20),
                 ),
                 color: const Color(0xFF3737A0).withOpacity(0.5),
               ),
@@ -145,9 +156,6 @@ class _GridOneElementState extends State<GridOneElement> {
         child: Center(
           child: Text(
             isTapped ? widget.secondTap : widget.firstTap,
-            style: isTapped
-                ? GoogleFonts.aladin(fontSize: 20)
-                : GoogleFonts.lateef(fontSize: 30, color: Colors.blueAccent),
           ),
         ),
         color: const Color(0xFF3737A0).withOpacity(0.5),
