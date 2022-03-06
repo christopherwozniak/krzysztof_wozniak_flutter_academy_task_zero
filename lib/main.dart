@@ -16,25 +16,43 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.yellow,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
+      home: Scaffold(
+        appBar: NewGradientAppBar(
+            title: const Text('Krzysztof Woźniak'),
+            gradient: const LinearGradient(
+                colors: [Colors.blueAccent, Colors.yellow])),
+        body: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 3,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text(
+                  "Zgadnij jak się nazywam? Mała podpowiedź u góry "),
+              color: Colors.teal[100],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text(
+                  "Zgadnij jak się nazywam? Mała podpowiedź u góry "),
+              color: Colors.teal[100],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text(
+                  "Zgadnij jak się nazywam? Mała podpowiedź u góry "),
+              color: Colors.teal[100],
+            ),
+          ],
         ),
-        home: Scaffold(
-            appBar: NewGradientAppBar(
-                title: const Text('Krzysztof Woźniak'),
-                gradient: const LinearGradient(
-                    colors: [Colors.blueAccent, Colors.yellow])),
-            body: GridView.count(
-              crossAxisCount: 3,
-              children: List.generate(9, (index) {
-                return Center(
-                  child: Text(
-                    'Item $index',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                );
-              }),
-            )));
+      ),
+    );
   }
 }
